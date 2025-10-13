@@ -33,7 +33,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        return view('frontend.layout.master');
+        return view('frontend.content.maincontent');
     }
 
     public function trackorder(Request $request)

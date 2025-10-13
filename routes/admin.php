@@ -43,29 +43,19 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     //Permission
     Route::resource('/permissions', PermissionController::class)->names('permission');
 
-
     //Category
     Route::resource('/categories', CategoryController::class)->names('category');
     Route::post('/class/change-status', [CategoryController::class, 'changeCategoryStatus'])->name('category.status');
     Route::post('/class/change-front-status', [CategoryController::class, 'changeFrontCategoryStatus'])->name('front-category.status');
 
-    //Subcategory
-    Route::resource('/subcategories', SubCategoryController::class)->names('subcategory');
-    Route::post('/subcategory/change-status', [SubCategoryController::class, 'changeSubcategoryStatus'])->name('subcategory.status');
-
-    //child Categories
-    Route::resource('/child-categories', ChildCategoryController::class)->names('child-category');
-    Route::post('/child-category/change-status', [ChildCategoryController::class, 'changeChildCategoryStatus'])->name('child-category.status');
-
     //slider & banner
     Route::resource('/sliders', SliderController::class)->names('slider');
-    Route::resource('/banners', BannerController::class)->names('banner');
 
-    //Blog
-    Route::resource('/blogs', BlogController::class)->names('blog');
 
     //Settings
     Route::resource('/basic-infos', BasicInfoController::class)->names('basic-info');
     Route::resource('/pages', PageController::class)->names('page');
+
+
 
 });

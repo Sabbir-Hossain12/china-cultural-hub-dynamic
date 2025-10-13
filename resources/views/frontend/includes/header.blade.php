@@ -47,22 +47,31 @@
 
                             <li class="nav-item submenu"><a class="nav-link" href="#">Content</a>
                                 <ul>
-                                    <li class="nav-item"><a class="nav-link" href="#">The Geographical Environment and Chinese Culture</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">The History and Society of China</a>
+                                    <li class="nav-item"><a class="nav-link" href="#">The Geographical Environment and
+                                            Chinese Culture</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">The History and Society of
+                                            China</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Chinese Traditional Thoughts</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Chinese Traditional Thoughts</a>
+                                    </li>
                                     <li class="nav-item"><a class="nav-link" href="#">The Lives of Ancient Chinese</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">China's Contribution to Worlds Science and Technology</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Migration and China's Social Changes</a>
+                                    <li class="nav-item"><a class="nav-link" href="#">China's Contribution to Worlds
+                                            Science and Technology</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Migration and China's Social
+                                            Changes</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Collision Between China and the West</a>
+                                    <li class="nav-item"><a class="nav-link" href="#">Collision Between China and the
+                                            West</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">China in Modern Times and Western Civilisation</a>
+                                    <li class="nav-item"><a class="nav-link" href="#">China in Modern Times and Western
+                                            Civilisation</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Life About Contemporary Chinese People</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Life About Contemporary Chinese
+                                            People</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#">International Community</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Political System and Basic Policies</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Political System and Basic
+                                            Policies</a></li>
                                 </ul>
                             </li>
 
@@ -74,7 +83,12 @@
 
                     <!-- Header Btn Start -->
                     <div class="header-btn">
-                        <a href="#" class="btn-default btn-highlighted">Get Started</a>
+                        {{--                        <a href="#" class="btn-default btn-highlighted">Get Started</a>--}}
+                        <form action="" method="get" class="d-flex">
+                            @csrf
+                            <input type="text" placeholder="Search" class="form-control" style="border-radius: 0">
+                            <button type="submit" class="btn-search">Search</button>
+                        </form>
                     </div>
                     <!-- Header Btn End -->
                 </div>

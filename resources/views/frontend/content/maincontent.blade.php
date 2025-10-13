@@ -14,4 +14,5 @@
     @include('frontend.includes.modern')
     @include('frontend.includes.Contemporary')
     @include('frontend.includes.political')
+    @include('frontend.includes.community')
 @endsection
