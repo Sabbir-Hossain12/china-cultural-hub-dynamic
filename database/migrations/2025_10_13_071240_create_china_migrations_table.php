@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('long_desc')->nullable();
             $table->text('video')->nullable();
-            $table->text('images');
+            $table->json('images');
             $table->timestamps();
         });
     }

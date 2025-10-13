@@ -98,7 +98,7 @@ class CategoryController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        //
+        return view('admin.pages.category.create');
     }
 
     /**
@@ -110,7 +110,8 @@ class CategoryController extends Controller implements HasMiddleware
 
         $category->name = $request->name;
         $category->slug = Str::slug($request->name ?? 'default') . uniqid();
-        $category->description = $request->description;
+        $category->long_desc = $request->long_desc;
+        $category->video = $request->video;
 
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;
@@ -154,7 +155,8 @@ class CategoryController extends Controller implements HasMiddleware
      */
     public function edit(Category $category)
     {
-        return response()->json(['status' => 'success', 'message' => 'Category fetched successfully', 'data' => $category], 200);
+        return view('admin.pages.category.create', compact('category'));
+//      return response()->json(['status' => 'success', 'message' => 'Category fetched successfully', 'data' => $category], 200);
     }
 
     /**
@@ -163,10 +165,11 @@ class CategoryController extends Controller implements HasMiddleware
     public function update(Request $request, Category $category)
     {
 
-
         $category->name = $request->name;
         //        $category->slug = Str::slug($request->name ?? 'default').uniqid();
-        $category->description = $request->description;
+        $category->long_desc = $request->long_desc;
+        $category->video = $request->video;
+
 
         $category->meta_title = $request->meta_title;
         $category->meta_description = $request->meta_description;

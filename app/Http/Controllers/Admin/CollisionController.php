@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Collision;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CollisionController extends Controller
 {
@@ -13,7 +14,9 @@ class CollisionController extends Controller
      */
     public function index()
     {
-        //
+        $collision = Collision::first();
+
+        return view('admin.pages.contents.collision.index', compact('collision'));
     }
 
     /**
@@ -29,7 +32,29 @@ class CollisionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $collision = new Collision();
+
+        $collision->title = $request->title;
+        $collision->slug = Str::slug($request->title);
+        $collision->short_desc = $request->short_desc;
+        $collision->long_desc = $request->long_desc;
+        $collision->btn_text = $request->btn_text;
+        $collision->video = $request->video;
+
+        $images = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_name = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move('public/admin/upload/content/', $image_name);
+                $images[] = 'public/admin/upload/content/' . $image_name;
+            }
+        }
+
+        $collision->images = json_encode($images);
+
+        $collision->save();
+
+        return redirect()->back()->with('success', 'Collision created successfully');
     }
 
     /**
@@ -53,7 +78,29 @@ class CollisionController extends Controller
      */
     public function update(Request $request, Collision $collision)
     {
-        //
+        $collision = new Collision();
+
+        $collision->title = $request->title;
+        $collision->slug = Str::slug($request->title);
+        $collision->short_desc = $request->short_desc;
+        $collision->long_desc = $request->long_desc;
+        $collision->btn_text = $request->btn_text;
+        $collision->video = $request->video;
+
+        $images = json_decode($collision->images) ?? [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_name = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move('public/admin/upload/content/', $image_name);
+                $images[] = 'public/admin/upload/content/' . $image_name;
+            }
+        }
+
+        $collision->images = json_encode($images);
+
+        $collision->save();
+
+        return redirect()->back()->with('success', 'Collision created successfully');
     }
 
     /**

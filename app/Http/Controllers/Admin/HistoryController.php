@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\History;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HistoryController extends Controller
 {
@@ -13,7 +14,9 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        //
+        $history = History::first();
+
+        return view('admin.pages.contents.history.index',compact('history'));
     }
 
     /**
@@ -29,7 +32,16 @@ class HistoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $history = new History();
+        $history->title = $request->title;
+        $history->slug = Str::slug($request->title);
+        $history->short_desc = $request->short_desc;
+        $history->long_desc = $request->long_desc;
+        $history->video = $request->video;
+
+        $history->save();
+
+        return redirect()->back()->with('success','History created successfully');
     }
 
     /**
@@ -53,7 +65,15 @@ class HistoryController extends Controller
      */
     public function update(Request $request, History $history)
     {
-        //
+        $history->title = $request->title;
+        $history->slug = Str::slug($request->title);
+        $history->short_desc = $request->short_desc;
+        $history->long_desc = $request->long_desc;
+        $history->video = $request->video;
+
+        $history->save();
+
+        return redirect()->back()->with('success','History Updated successfully');
     }
 
     /**

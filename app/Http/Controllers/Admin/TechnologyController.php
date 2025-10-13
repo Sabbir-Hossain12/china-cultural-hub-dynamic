@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -13,7 +14,9 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technology = Technology::first();
+
+        return view('admin.pages.contents.technology.index', compact('technology'));
     }
 
     /**
@@ -29,7 +32,27 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $technology = new Technology();
+
+        $technology->title = $request->title;
+        $technology->slug = Str::slug($request->title);
+        $technology->long_desc = $request->long_desc;
+        $technology->video = $request->video;
+
+        $images = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_name = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move('public/admin/upload/content/', $image_name);
+                $images[] = 'public/admin/upload/content/' . $image_name;
+            }
+        }
+
+        $technology->images = json_encode($images);
+
+        $technology->save();
+
+        return redirect()->back()->with('success', 'Technology created successfully');
     }
 
     /**
@@ -53,7 +76,26 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, Technology $technology)
     {
-        //
+
+        $technology->title = $request->title;
+        $technology->slug = Str::slug($request->title);
+        $technology->long_desc = $request->long_desc;
+        $technology->video = $request->video;
+
+        $images = json_decode($technology->images) ?? [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image_name = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $image->move('public/admin/upload/content/', $image_name);
+                $images[] = 'public/admin/upload/content/' . $image_name;
+            }
+        }
+
+        $technology->images = json_encode($images);
+
+        $technology->save();
+
+        return redirect()->back()->with('success', 'Technology created successfully');
     }
 
     /**

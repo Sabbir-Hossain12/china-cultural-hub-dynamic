@@ -9,12 +9,23 @@ use App\Http\Controllers\Admin\BasicInfoController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\ChinaMigrationController;
+use App\Http\Controllers\Admin\CollisionController;
+use App\Http\Controllers\Admin\CommunityController;
+use App\Http\Controllers\Admin\ContemporaryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GeographyController;
+use App\Http\Controllers\Admin\HistoryController;
+use App\Http\Controllers\Admin\LiveController;
+use App\Http\Controllers\Admin\ModernController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\PoliticalController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\Admin\TraditionController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     //Auth
@@ -51,10 +62,23 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     //slider & banner
     Route::resource('/sliders', SliderController::class)->names('slider');
 
+    //Contents
+    Route::resource('/geographies', GeographyController::class)->names('geography');
+    Route::resource('/history', HistoryController::class)->names('history');
+    Route::resource('/collisions', CollisionController::class)->names('collision');
+    Route::resource('/lives', LiveController::class)->names('live');
+    Route::resource('/migrations', ChinaMigrationController::class)->names('migration');
+    Route::resource('/politicals', PoliticalController::class)->names('political');
+    Route::resource('/technologies', TechnologyController::class)->names('technology');
+    Route::resource('/communities', CommunityController::class)->names('community');
+    Route::resource('/moderns', ModernController::class)->names('modern');
+    Route::resource('/traditions', TraditionController::class)->names('tradition');
+    Route::resource('/contemporaries', ContemporaryController::class)->names('contemporary');
 
     //Settings
     Route::resource('/basic-infos', BasicInfoController::class)->names('basic-info');
     Route::resource('/pages', PageController::class)->names('page');
+
 
 
 

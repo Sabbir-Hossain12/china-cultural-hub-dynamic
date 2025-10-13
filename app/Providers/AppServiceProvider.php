@@ -11,6 +11,7 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,29 +29,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View()->composer('*', function ($view) {
-
-            $settings = BasicInfo::first();
-
-
-            $view->with([
-                'settings' => $settings,
-            ]);
-        });
-
-
-        View()->composer('frontend.includes.header', function ($view) {
-
-        });
 
         View()->composer('frontend.includes.footer', function ($view) {
 
             $usefulls = Page::where('status', 1)->where('type', 1)->get();
             $services = Page::where('status', 1)->where('type', 0)->get();
 
+//            $settings = Cache ::rememberForever('settings',function ()
+//            {
+//                return  BasicInfo::first();
+//            });
+
+            $settings = BasicInfo::first();
+
             $view->with([
                 'services' => $services,
-                'usefulls' => $usefulls
+                'usefulls' => $usefulls,
+                'settings' => $settings,
             ]);
         });
     }
