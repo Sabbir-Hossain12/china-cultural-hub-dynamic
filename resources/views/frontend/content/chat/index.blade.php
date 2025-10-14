@@ -14,6 +14,7 @@
         /*    height: 100vh;*/
         /*}*/
         #chat-container {
+            margin-top: 150px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -93,7 +94,7 @@
     {{--        </div>--}}
     {{--    </div>--}}
 
-    <div class="container">
+    <div class="">
         <div id="chat-container"></div>
 
         <div id="chat-input-container">

@@ -4,30 +4,31 @@ namespace App\Http\Controllers\Web;
 
 use Adrianorosa\GeoLocation\GeoLocation;
 use App\Http\Controllers\Controller;
-use App\Models\AffiliateProduct;
-use App\Models\BasicInfo;
-use App\Models\Blog;
-use App\Models\Cart;
+
 use App\Models\Category;
-use App\Models\ChildCategory;
-use App\Models\Coupon;
-use App\Models\Customer;
-use App\Models\Order;
-use App\Models\OrderProduct;
+
+use App\Models\ChinaMigration;
+use App\Models\Collision;
+use App\Models\Community;
+use App\Models\Contemporary;
+use App\Models\Geography;
+use App\Models\History;
+use App\Models\Live;
+use App\Models\Modern;
 use App\Models\Page;
-use App\Models\Product;
-use App\Models\Productcolor;
-use App\Models\Productvariant;
-use App\Models\ShippingCharge;
-use App\Models\Subcategory;
+
+use App\Models\Political;
+use App\Models\Technology;
+use App\Models\Tradition;
 use App\Models\User;
-use App\Models\Wishlist;
+
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Session;
+use function Pest\Laravel\get;
 
 class HomeController extends Controller
 {
@@ -692,5 +693,100 @@ class HomeController extends Controller
         );
 
         return redirect()->back()->with('success', 'Product Added Successfully');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+
+        $categories = Category::where('name','like','%'.$keyword.'%')->get();
+
+        return view('frontend.content.search-result', compact('categories'));
+    }
+
+    public function categoryDetails(string $slug)
+    {
+        $details = Category::where('slug',$slug)->first();
+
+        return view('frontend.content.category-details', compact('details'));
+    }
+
+    public function geography()
+    {
+        $details = Geography::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function history()
+    {
+        $details = History::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function tradition()
+    {
+        $details = Tradition::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function lives()
+    {
+        $details = Live::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function technology()
+    {
+        $details = Technology::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function chinaMigration()
+    {
+        $details = ChinaMigration::first();
+
+        return view('frontend.content.core-details', compact('details'));
+
+    }
+
+    public function collision()
+    {
+        $details = Collision::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function modern()
+    {
+        $details = Modern::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function contemporary()
+    {
+        $details = Contemporary::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function political()
+    {
+        $details = Political::first();
+
+        return view('frontend.content.core-details', compact('details'));
+    }
+
+    public function community()
+    {
+        $details = Community::first();
+
+        return view('frontend.content.core-details', compact('details'));
+
     }
 }

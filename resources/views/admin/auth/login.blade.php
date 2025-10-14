@@ -19,9 +19,9 @@
             <div class="mx-0 row w-100">
                 <div class="mx-auto col-lg-4">
                     <div class="px-4 py-5 text-left auth-form-light px-sm-5">
-                        <div class="brand-logo">
-                            <img src="{{ asset($settings->dark_logo) }}" alt="logo">
-                        </div>
+{{--                        <div class="brand-logo">--}}
+{{--                            <img src="{{ asset($settings->dark_logo) }}" alt="logo">--}}
+{{--                        </div>--}}
                         <h4>Hello! let's get started</h4>
                         <h6 class="font-weight-light">Sign in to continue.</h6>
                         <form class="pt-3" method="POST" action="{{route('admin.login')}}">

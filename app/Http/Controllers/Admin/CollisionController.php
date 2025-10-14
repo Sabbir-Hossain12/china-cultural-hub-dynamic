@@ -78,10 +78,9 @@ class CollisionController extends Controller
      */
     public function update(Request $request, Collision $collision)
     {
-        $collision = new Collision();
+
 
         $collision->title = $request->title;
-        $collision->slug = Str::slug($request->title);
         $collision->short_desc = $request->short_desc;
         $collision->long_desc = $request->long_desc;
         $collision->btn_text = $request->btn_text;

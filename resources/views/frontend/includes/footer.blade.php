@@ -35,18 +35,17 @@
 
                     <!-- About Footer Content Start -->
                     <div class="about-footer-content-gold">
-                        <p>We provide expert pool cleaning, maintenance, and repair services for crystal-clear, safe
-                            swimming.</p>
+                        <p>{{ $settings->about_text ?? '' }}</p>
                     </div>
                     <!-- About Footer Content End -->
 
                     <!-- Footer Social Link Start -->
                     <div class="footer-social-links-gold">
                         <ul>
-                            <li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="{{ $settings->youtube_link ?? '' }}"><i class="fa-brands fa-bilibili"></i></a></li>
+                            <li><a href="{{ $settings->twitter_link ?? '' }}"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            <li><a href="{{ $settings->fb_link ?? '' }}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="{{ $settings->insta_link }}"><i class="fa-brands fa-instagram"></i></a></li>
                         </ul>
                     </div>
                     <!-- Footer Social Link End -->
@@ -61,24 +60,24 @@
                     <div class="footer-links-gold quick-links-gold">
                         <h3>quick link</h3>
                         <ul>
-                            <li><a href="index-3.html">Home</a></li>
-                            <li><a href="about.html">About us</a></li>
-                            <li><a href="services.html">services</a></li>
-                            <li><a href="blog.html">blog</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
+                            @forelse($usefulls as $page)
+                                <li><a href="{{ route('page',$page->slug) }}">{{ $page->title ?? '' }}</a></li>
+                            @empty
+                            @endforelse
                         </ul>
                     </div>
                     <!-- Footer Links End -->
 
                     <!-- Footer Links Start -->
                     <div class="footer-links-gold service-links-gold">
-                        <h3>Services</h3>
+                        <h3>Topics</h3>
                         <ul>
-                            <li><a href="service-single.html">Event & Party Spaces</a></li>
-                            <li><a href="service-single.html">Themed Gift Shops</a></li>
-                            <li><a href="service-single.html">Food Courts Stations</a></li>
-                            <li><a href="service-single.html">Locker Rentals</a></li>
-                            <li><a href="service-single.html">Interactive Game Zones</a></li>
+                            @forelse($topics as $category)
+                                <li>
+                                    <a href="{{ route('categoryDetails',$category->slug) }}">{{ $category->name }}</a>
+                                </li>
+                            @empty
+                            @endforelse
                         </ul>
                     </div>
                     <!-- Footer Links End -->
@@ -92,7 +91,7 @@
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div class="footer-contact-content-gold">
-                                <p><a href="tel:+132468795">+(00) 132 468 795</a></p>
+                                <p><a href="tel:{{ $settings->phone_1 ?? '' }}">{{ $settings->phone_1 ?? '' }}</a></p>
                             </div>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -103,7 +102,7 @@
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div class="footer-contact-content-gold">
-                                <p><a href="mailto:info@domainname.com">info@domainname.com</a></p>
+                                <p><a href="mailto:{{ $settings->mail }}">{{ $settings->mail ?? '' }}/a></p>
                             </div>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -114,7 +113,7 @@
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div class="footer-contact-content-gold">
-                                <p>123 High Street, Springfield, London SW1A 1A, United Kingdom.</p>
+                                <p>{{ $settings->address ?? '' }}</p>
                             </div>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -129,17 +128,12 @@
                 <div class="footer-copyright-gold">
                     <!-- Footer Copyright Text Start -->
                     <div class="footer-copyright-text-gold">
-                        <p>Copyright © 2025 All Rights Reserved.</p>
+                        <p>{{ $settings->copyright_text ?? '' }}</p>
                     </div>
                     <!-- Footer Copyright Text End -->
 
                     <!-- Footer Privacy Policy Start -->
-                    <div class="footer-privacy-policy-gold">
-                        <ul>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Term's & condition</a></li>
-                        </ul>
-                    </div>
+
                     <!-- Footer Privacy Policy End -->
                 </div>
                 <!-- Footer Copyright Section End -->

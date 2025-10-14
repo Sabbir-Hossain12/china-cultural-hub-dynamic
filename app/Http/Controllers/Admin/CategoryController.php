@@ -35,20 +35,7 @@ class CategoryController extends Controller implements HasMiddleware
             $categories = Category::query();
 
             return DataTables::eloquent($categories)
-                ->addColumn('front_status', function ($admin) {
-                    if ($admin->front_status == 1) {
-                        return ' <a class="status" id="adminFrontStatus" href="javascript:void(0)"
-                                               data-id="' . $admin->id . '" data-status="' . $admin->front_status . '"> <i
-                                                        class="fa-solid fa-toggle-on fa-2x"></i>
-                                            </a>';
-                    } else {
-                        return '<a class="status" id="adminFrontStatus" href="javascript:void(0)"
-                                               data-id="' . $admin->id . '" data-status="' . $admin->front_status . '"> <i
-                                                        class="fa-solid fa-toggle-off fa-2x" style="color: grey"></i>
-                                            </a>';
-                    }
 
-                })
                 ->addColumn('status', function ($admin) {
                     if ($admin->status == 1) {
                         return ' <a class="status" id="adminStatus" href="javascript:void(0)"
@@ -70,7 +57,7 @@ class CategoryController extends Controller implements HasMiddleware
                     $deleteAction = '';
 
                     if (Auth::user()->can('Edit Category')) {
-                        $editAction = '<a class="editButton btn btn-sm btn-info" href="javascript:void(0)"  data-id="' . $admin->id . '" data-bs-toggle="modal" data-bs-target="#editAdminModal">
+                        $editAction = '<a class="editButton btn btn-sm btn-info" href="'. route('admin.category.edit',$admin->id).'" >
                                    <i class="fas fa-edit"></i></a>';
                     }
 
@@ -113,13 +100,7 @@ class CategoryController extends Controller implements HasMiddleware
         $category->long_desc = $request->long_desc;
         $category->video = $request->video;
 
-        $category->meta_title = $request->meta_title;
-        $category->meta_description = $request->meta_description;
-        $category->meta_keywords = $request->meta_keywords;
-        $category->google_schema = $request->google_schema;
 
-        $category->front_status = $request->front_status;
-        $category->status = $request->status;
 
         if ($request->hasFile('image')) {
 
@@ -139,7 +120,9 @@ class CategoryController extends Controller implements HasMiddleware
 
         $category->save();
 
-        return response()->json(['status' => 'success', 'message' => 'Category created successfully'], 200);
+//        return response()->json(['status' => 'success', 'message' => 'Category created successfully'], 200);
+
+        return redirect()->route('admin.category.index')->with('success', 'Category created successfully');
     }
 
     /**
@@ -155,7 +138,7 @@ class CategoryController extends Controller implements HasMiddleware
      */
     public function edit(Category $category)
     {
-        return view('admin.pages.category.create', compact('category'));
+        return view('admin.pages.category.edit', compact('category'));
 //      return response()->json(['status' => 'success', 'message' => 'Category fetched successfully', 'data' => $category], 200);
     }
 
@@ -170,14 +153,6 @@ class CategoryController extends Controller implements HasMiddleware
         $category->long_desc = $request->long_desc;
         $category->video = $request->video;
 
-
-        $category->meta_title = $request->meta_title;
-        $category->meta_description = $request->meta_description;
-        $category->meta_keywords = $request->meta_keywords;
-        $category->google_schema = $request->google_schema;
-
-        $category->front_status = $request->front_status;
-        $category->status = $request->status;
 
         if ($request->hasFile('image')) {
 
@@ -205,7 +180,10 @@ class CategoryController extends Controller implements HasMiddleware
 
         $category->save();
 
-        return response()->json(['status' => 'success', 'message' => 'Category created successfully'], 200);
+//        return response()->json(['status' => 'success', 'message' => 'Category created successfully'], 200);
+
+        return redirect()->route('admin.category.index')->with('success', 'Category created successfully');
+
     }
 
     /**

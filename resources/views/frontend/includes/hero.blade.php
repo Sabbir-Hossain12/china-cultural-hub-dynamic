@@ -1,6 +1,7 @@
 <!-- Hero Start -->
 <div class="hero-gold dark-section parallaxie"
-     style="background-image: url('https://plus.unsplash.com/premium_photo-1723665603703-edb13ee626ea?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center 0px;">
+     style="background-image: url('{{ asset($hero->image) }}');
+      background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center 0px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -9,15 +10,14 @@
                     <!-- Section Title Start -->
                     <div class="section-title">
                         <h3 class="wow fadeInUp">Welcome to China Cultural HUb </h3>
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">Your gateway to Chinese culture, history,
-                            and innovation.!</h1>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">Experience China’s past, present, and future.</p>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">{{ $hero->title }}</h1>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">{{ $hero->text }}</p>
                     </div>
                     <!-- Section Title End -->
 
                     <!-- Hero Button Start -->
                     <div class="hero-btn-gold wow fadeInUp" data-wow-delay="0.4s">
-                        <a href="#" class="btn-default btn-highlighted">Explore China</a>
+                        <a href="{{ $hero->btn_link }}" class="btn-default btn-highlighted">Explore China</a>
                         <a href="#" class="btn-default hero-video-btn">Watch Cultural Video</a>
                     </div>
                     <!-- Hero Button End -->

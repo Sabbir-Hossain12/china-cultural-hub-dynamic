@@ -12,40 +12,9 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $productCount = Product::where('status', 1)->count();
-
-        $categoryCount = Category::where('status', 1)->count();
-
-        $orderCount = Order::count();
-
-        $brandCount = Brand::where('status', 1)->count();
-
-        $productTodayCount = Product::where('status', 1)
-            ->whereDate('created_at', Carbon::today())
-            ->count();
-
-        $categoryTodayCount = Category::where('status', 1)
-            ->whereDate('created_at', Carbon::today())
-            ->count();
-
-        $orderTodayCount = Order::whereDate('created_at', Carbon::today())
-            ->count();
-
-        $brandTodayCount = Brand::where('status', 1)
-            ->whereDate('created_at', Carbon::today())
-            ->count();
-
-        return view('admin.pages.dashboard',
-            compact('productCount', 'categoryCount', 'orderCount', 'brandCount',
-            'productTodayCount', 'categoryTodayCount', 'orderTodayCount', 'brandTodayCount'
-
-            ));
-
+        return view('admin.pages.dashboard');
     }
 
     /**
@@ -94,5 +63,21 @@ class DashboardController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function uploadCkeditorImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName.'_'.time().'.'.$extension;
+            $request->file('upload')->move(('public/admin/upload/ckeditor'), $fileName);
+        }
+
+        return response()->json([
+            'url' => asset('public/admin/upload/ckeditor/'.$fileName), 'fileName' => $fileName,
+            'uploaded' => 1
+        ]);
     }
 }

@@ -34,10 +34,9 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <h4 class="mb-0 card-title">Category List</h4>
                         @can('Create Category')
-                            <button class="btn btn-md btn-secondary" data-bs-toggle="modal"
-                                    data-bs-target="#createAdminModal">
+                            <a class="btn btn-md btn-secondary" href="{{ route('admin.category.create') }}">
                                 Create Category
-                            </button>
+                            </a>
                         @endcan
                     </div>
 
@@ -49,10 +48,7 @@
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Image</th>
                                 <th>Category Title</th>
-                                <th>Popular Status</th>
-                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -322,25 +318,10 @@
 
                     },
 
-                    {
-                        data: 'image',
-                        render: function (data, type, row) {
-                            return '<img src="' + baseAssetUrl + row.image + '" width="150" height="150" alt="Image">';
-                        }
-                    },
 
                     {
                         data: 'name',
                         name: 'name'
-
-                    },
-                    {
-                        data: 'front_status'
-                    },
-
-                    {
-                        data: 'status',
-
 
                     },
                     {
@@ -349,138 +330,6 @@
                         searchable: false
                     },
                 ]
-            });
-
-
-            // Create Admin
-            $('#createAdmin').submit(function (e) {
-                e.preventDefault();
-
-                let formData = new FormData(this);
-
-                $.ajax({
-                    type: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{ route('admin.category.store') }}",
-                    data: formData,
-                    processData: false,  // Prevent jQuery from processing the data
-                    contentType: false,  // Prevent jQuery from setting contentType
-                    success: function (res) {
-                        if (res.status === 'success') {
-                            $('#createAdminModal').modal('hide');
-                            $('#createAdmin')[0].reset();
-                            adminTable.ajax.reload()
-                            swal.fire({
-                                title: "Success",
-                                text: "Category Created !",
-                                icon: "success"
-                            })
-
-
-                        }
-                    },
-                    error: function (err) {
-                        console.error('Error:', err);
-                        swal.fire({
-                            title: "Failed",
-                            text: "Something Went Wrong !",
-                            icon: "error"
-                        })
-                        // Optionally, handle error behavior like showing an error message
-                    }
-                });
-            });
-
-            // Edit Admin Data
-            $(document).on('click', '.editButton', function () {
-                let id = $(this).data('id');
-                $('#id').val(id);
-
-                $.ajax(
-                    {
-                        type: "GET",
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "{{ url('admin/categories') }}/" + id + "/edit",
-                        data: {
-                            id: id
-                        },
-
-                        processData: false,  // Prevent jQuery from processing the data
-                        contentType: false,  // Prevent jQuery from setting contentType
-                        success: function (res) {
-
-                            $('#name').val(res.data.name);
-                            $('#description').val(res.data.description);
-                            $('#meta_title').val(res.data.meta_title);
-                            $('#meta_description').val(res.data.meta_description);
-                            $('#meta_keywords').val(res.data.meta_keywords);
-                            $('#google_schema').val(res.data.google_schema);
-
-                            $('#status').val(res.data.status);
-                            $('#front_status').val(res.data.front_status);
-
-                            $('#imgPrev').empty();
-                            $('#imgPrev').append(
-                                `<img id="profileImg" src="{{asset('')}}${res.data.image}" width="300px" height="100px">`
-                            );
-
-                            $('#metaImgPrev').empty();
-                            $('#metaImgPrev').append(
-                                `<img id="profileImg" src="{{asset('')}}${res.data.image}" width="300px" height="100px">`
-                            );
-
-
-                        },
-                        error: function (err) {
-                            console.log('failed')
-                        }
-                    }
-                )
-            })
-
-            // Update Admin Data
-            $('#editAdmin').submit(function (e) {
-                e.preventDefault();
-                let id = $('#id').val();
-                let formData = new FormData(this);
-
-                $.ajax({
-                    type: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{ url('admin/categories') }}/" + id,
-                    data: formData,
-                    processData: false,  // Prevent jQuery from processing the data
-                    contentType: false,  // Prevent jQuery from setting contentType
-                    success: function (res) {
-                        if (res.status === 'success') {
-                            $('#editAdminModal').modal('hide');
-                            $('#editAdmin')[0].reset();
-                            adminTable.ajax.reload()
-                            swal.fire({
-                                title: "Success",
-                                text: "Categories Updated !",
-                                icon: "success"
-                            })
-
-
-                        }
-                    },
-                    error: function (err) {
-                        console.error('Error:', err);
-                        swal.fire({
-                            title: "Failed",
-                            text: "Something Went Wrong !",
-                            icon: "error"
-                        })
-                        // Optionally, handle error behavior like showing an error message
-                    }
-                });
             });
 
 

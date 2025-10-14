@@ -14,7 +14,7 @@ class GeographyController extends Controller
      */
     public function index()
     {
-        $geography = Geography::all();
+        $geography = Geography::first();
 
         return view('admin.pages.contents.geography.index', compact('geography'));
     }

@@ -79,6 +79,7 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::resource('/basic-infos', BasicInfoController::class)->names('basic-info');
     Route::resource('/pages', PageController::class)->names('page');
 
+    Route::post('/ckeditor/upload', [DashboardController::class, 'uploadCKEditorImage'])->name('ckeditor.upload');
 
 
 

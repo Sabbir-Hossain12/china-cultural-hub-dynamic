@@ -85,312 +85,123 @@
             </li>
         @endcanany
 
-        {{--     Affiliate      --}}
-        @can('View Affiliate')
-            <li class="nav-item @if(request()->routeIs('admin.affiliate.*')) active @endif">
-                <a class="nav-link" data-toggle="collapse" href="#affiliate" aria-expanded="false"
-                   aria-controls="ui-basic">
-                    <i class="typcn typcn-user-add-outline menu-icon"></i>
-                    <span class="menu-title">Affiliate</span>
-                    <i class="typcn typcn-chevron-right menu-arrow"></i>
-                </a>
-
-                <div class="collapse @if(request()->routeIs('admin.affiliate.*')) show @endif" id="affiliate">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a
-                                class="nav-link @if($currentRouteName == 'admin.affiliate.index') active @endif"
-                                href="{{ route('admin.affiliate.index') }}">Affiliates</a></li>
-                    </ul>
-                </div>
-
-            </li>
-        @endcan
-
         {{--    Product Manage    --}}
-        @canany(['View Category', 'View Subcategory', 'View Child Category', 'View Brand', 'View Type', 'View Product', 'View Color', 'View Variant'])
-            <li class="nav-item @if(request()->routeIs('admin.category.*','admin.subcategory.*','admin.child-category.*','admin.brand.*','admin.product-type.*','admin.product.*','admin.color.*','admin.variant.*')) active @endif">
+        @canany(['View Category'])
+            <li class="nav-item @if(request()->routeIs('admin.category.*')) active @endif">
                 <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
                    aria-controls="product">
                     <i class="typcn typcn-device-desktop menu-icon"></i>
-                    <span class="menu-title">Product Management</span>
+                    <span class="menu-title">Category Management</span>
                     <i class="typcn typcn-chevron-right menu-arrow"></i>
                 </a>
 
                 <div
-                    class="collapse @if(request()->routeIs('admin.category.*','admin.subcategory.*','admin.child-category.*','admin.brand.*','admin.product-type.*','admin.product.*','admin.color.*','admin.variant.*')) show @endif"
+                    class="collapse @if(request()->routeIs('admin.category.*')) show @endif"
                     id="product">
                     <ul class="nav flex-column sub-menu">
                         @can('View Category')
                             <li class="nav-item"><a
                                     class="nav-link @if($currentRouteName == 'admin.category.index') active @endif"
-                                    href="{{ route('admin.category.index') }}">Category</a></li>
-                        @endcan
-
-                        @can('View Subcategory')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.subcategory.index') active @endif"
-                                    href="{{ route('admin.subcategory.index') }}">Subcategory</a></li>
-                        @endcan
-
-                        @can('View Child Category')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.child-category.index') active @endif"
-                                    href="{{ route('admin.child-category.index') }}">Child Category</a></li>
-                        @endcan
-
-                        @can('View Brand')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.brand.index') active @endif"
-                                    href="{{ route('admin.brand.index') }}">Brand</a></li>
-                        @endcan
-
-                        @can('View Type')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.product-type.index') active @endif"
-                                    href="{{ route('admin.product-type.index') }}">Product Type</a></li>
-                        @endcan
-
-                        @can('View Product')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.product.index') active @endif"
-                                    href="{{ route('admin.product.index') }}">Product List</a></li>
-                        @endcan
-
-                        @can('Create Product')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.product.create') active @endif"
-                                    href="{{ route('admin.product.create') }}">Product Create</a></li>
-                        @endcan
-
-                        @can('View Color')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.color.index') active @endif"
-                                    href="{{ route('admin.color.index') }}">Colors</a></li>
-                        @endcan
-
-                        @can('View Variant')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.variant.index') active @endif"
-                                    href="{{ route('admin.variant.index') }}">Variants</a></li>
-                        @endcan
-                    </ul>
-                </div>
-            </li>
-        @endcanany
-
-        {{--    Order Manage    --}}
-        @canany(['View Coupon', 'View Order'])
-            <li class="nav-item @if(request()->routeIs('admin.coupon.*','admin.order.*')) active @endif">
-                <a class="nav-link" data-toggle="collapse" href="#order" aria-expanded="false" aria-controls="order">
-                    <i class="typcn typcn-shopping-cart menu-icon"></i>
-                    <span class="menu-title">Order Management</span>
-                    <i class="typcn typcn-chevron-right menu-arrow"></i>
-                </a>
-
-                <div class="collapse @if(request()->routeIs('admin.coupon.*','admin.order.*')) show @endif" id="order">
-                    <ul class="nav flex-column sub-menu">
-                        @can('View Coupon')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.coupon.index') active @endif"
-                                    href="{{ route('admin.coupon.index') }}">Coupon</a></li>
-                        @endcan
-
-                        @can('View Order')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.order.index') active @endif"
-                                    href="{{ route('admin.order.index') }}">Orders</a></li>
-                        @endcan
-
-                    </ul>
-                </div>
-            </li>
-        @endcanany
-
-        {{--   Inventory & Stock --}}
-        @canany(['View Inventory', 'View Purchase', 'View Supplier','Create Purchase'])
-            <li class="nav-item @if(request()->routeIs('admin.purchase.*','admin.supplier.*','admin.inventory.*')) active @endif">
-                <a class="nav-link" data-toggle="collapse" href="#inventory"
-                   aria-expanded="@if(request()->routeIs('admin.purchase.*','admin.supplier.*'))true @else false @endif"
-                   aria-controls="order">
-                    <i class="typcn typcn-archive menu-icon"></i>
-                    <span class="menu-title">Inventory Management</span>
-                    <i class="typcn typcn-chevron-right menu-arrow"></i>
-                </a>
-
-                <div
-                    class="collapse @if(request()->routeIs('admin.purchase.*','admin.supplier.*','admin.inventory.*')) show @endif"
-                    id="inventory">
-                    <ul class="nav flex-column sub-menu">
-                        @can('View Supplier')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName  == 'admin.supplier.index') active @endif"
-                                    href="{{ route('admin.supplier.index') }}">Supplier</a></li>
-                        @endcan
-
-                        @can('View Purchase')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName  == 'admin.purchase.index') active @endif"
-                                    href="{{ route('admin.purchase.index') }}">Purchase</a></li>
-                        @endcan
-
-                        @can('Create Purchase')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.purchase.create') active @endif"
-                                    href="{{ route('admin.purchase.create') }}">Add Purchase</a></li>
-                        @endcan
-
-                        @can('View Inventory')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName  == 'admin.inventory.index') active @endif"
-                                    href="{{ route('admin.inventory.index') }}">Inventory</a></li>
-                        @endcan
-                    </ul>
-                </div>
-            </li>
-        @endcanany
-
-        {{--   Wholesale & Stock --}}
-        @canany(['View Wholesale', 'View wStocks', 'View wCustomer'])
-            <li class="nav-item  @if(request()->routeIs('admin.wcustomers.*','admin.wsales.*','admin.wsalestocks.*')) active @endif">
-                <a class="nav-link" data-toggle="collapse" href="#wholesale"
-                   aria-expanded="@if(request()->routeIs('admin.wcustomers.*','admin.wsales.*','admin.wsalestocks.*')) true @else false @endif"
-                   aria-controls="order">
-                    <i class="typcn typcn-archive menu-icon"></i>
-                    <span class="menu-title">Wholesale Management</span>
-                    <i class="typcn typcn-chevron-right menu-arrow"></i>
-                </a>
-
-                <div
-                    class="collapse @if(request()->routeIs('admin.wcustomers.*','admin.wsales.*','admin.wsalestocks.*')) show @endif"
-                    id="wholesale">
-                    <ul class="nav flex-column sub-menu">
-                        @can('View wCustomer')
-                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{ route('admin.wcustomers.index') }}">Customers</a>
-                            </li>
-                        @endcan
-
-                        @can('View Wholesale')
-                            <li class="nav-item"><a class="nav-link" href="{{ route('admin.wsales.index') }}">Sales</a>
-                            </li>
-                        @endcan
-
-                        @can('View wStocks')
-                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{ route('admin.wsalestocks.index') }}">Stocks</a>
+                                    href="{{ route('admin.category.index') }}">Category</a>
                             </li>
                         @endcan
                     </ul>
                 </div>
             </li>
         @endcanany
+
+        {{--   Core Content     --}}
+        <li class="nav-item @if(request()->routeIs('admin.geography.*,admin.history.*,admin.collision.*,admin.live.*,admin.migration.*,admin.political.*,admin.technology.*,admin.community.*,admin.modern.*,admin.tradition.*,admin.contemporary.*')) active @endif">
+            <a class="nav-link" data-toggle="collapse" href="#content" aria-expanded="false"
+               aria-controls="content">
+                <i class="typcn typcn-device-desktop menu-icon"></i>
+                <span class="menu-title">Core Contents</span>
+                <i class="typcn typcn-chevron-right menu-arrow"></i>
+            </a>
+
+            <div
+                class="collapse @if(request()->routeIs('admin.geography.*,admin.history.*,admin.collision.*,admin.live.*,admin.migration.*,admin.political.*,admin.technology.*,admin.community.*,admin.modern.*,admin.tradition.*,admin.contemporary.*')) show @endif"
+                id="content">
+                <ul class="nav flex-column sub-menu">
+
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.geography.index') active @endif"
+                            href="{{ route('admin.geography.index') }}">Geography</a>
+                    </li>
+
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.history.index') active @endif"
+                            href="{{ route('admin.history.index') }}">History</a>
+                    </li>
+
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.collision.index') active @endif"
+                            href="{{ route('admin.collision.index') }}">Collision</a>
+                    </li>
+
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.live.index') active @endif"
+                            href="{{ route('admin.live.index') }}">Live</a>
+                    </li>
+
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.migration.index') active @endif"
+                            href="{{ route('admin.migration.index') }}">Migration</a>
+                    </li>
+
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.political.index') active @endif"
+                            href="{{ route('admin.political.index') }}">Political</a>
+                    </li>
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.technology.index') active @endif"
+                            href="{{ route('admin.technology.index') }}">Technology</a>
+                    </li>
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.community.index') active @endif"
+                            href="{{ route('admin.community.index') }}">Community</a>
+                    </li>
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.modern.index') active @endif"
+                            href="{{ route('admin.modern.index') }}">Modern</a>
+                    </li>
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.tradition.index') active @endif"
+                            href="{{ route('admin.tradition.index') }}">Tradition</a>
+                    </li>
+                    <li class="nav-item"><a
+                            class="nav-link @if($currentRouteName == 'admin.contemporary.index') active @endif"
+                            href="{{ route('admin.contemporary.index') }}">Contemporary</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
 
         {{--    Slider and Banner    --}}
         @canany(['View Slider', 'View Banner'])
-            <li class="nav-item @if(request()->routeIs('admin.slider.*','admin.banner.*')) active @endif">
+            <li class="nav-item @if(request()->routeIs('admin.slider.*')) active @endif">
                 <a class="nav-link" data-toggle="collapse" href="#sliderBanner" aria-expanded="false"
                    aria-controls="sliderBanner">
                     <i class="typcn typcn-image menu-icon"></i>
-                    <span class="menu-title">Slider and Banner</span>
+                    <span class="menu-title">Hero Section</span>
                     <i class="typcn typcn-chevron-right menu-arrow"></i>
                 </a>
 
-                <div class="collapse @if(request()->routeIs('admin.slider.*','admin.banner.*')) show @endif"
+                <div class="collapse @if(request()->routeIs('admin.slider.*')) show @endif"
                      id="sliderBanner">
                     <ul class="nav flex-column sub-menu">
+
                         @can('View Slider')
                             <li class="nav-item"><a
                                     class="nav-link @if($currentRouteName == 'admin.slider.index') active @endif"
                                     href="{{ route('admin.slider.index') }}">Slider</a></li>
                         @endcan
-
-                        @can('View Banner')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.banner.index') active @endif"
-                                    href="{{ route('admin.banner.index') }}">Banner</a></li>
-                        @endcan
                     </ul>
                 </div>
             </li>
         @endcanany
 
-        {{--   API Manage     --}}
-        @canany(['Courier API', 'SMS Gateway', 'Payment Gateway'])
-            <li class="nav-item @if(request()->routeIs('admin.courier.*','admin.sms.*','admin.payment.*')) active @endif">
-                <a class="nav-link" data-toggle="collapse" href="#api-manage" aria-expanded="false"
-                   aria-controls="api-manage">
-                    <i class="typcn typcn-key menu-icon"></i>
-                    <span class="menu-title">API</span>
-                    <i class="typcn typcn-chevron-right menu-arrow"></i>
-                </a>
-
-                <div
-                    class="collapse @if(request()->routeIs('admin.courier.*','admin.sms.*','admin.payment.*')) show @endif"
-                    id="api-manage">
-                    <ul class="nav flex-column sub-menu">
-                        @can('Courier API')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.courier.index') active @endif"
-                                    href="{{ route('admin.courier.index') }}">Courier API</a></li>
-                        @endcan
-
-                        @can('SMS Gateway')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.sms.index') active @endif"
-                                    href="{{ route('admin.sms.index') }}">SMS Gateway</a></li>
-                        @endcan
-
-                        @can('Payment Gateway')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.payment.index') active @endif"
-                                    href="{{ route('admin.payment.index') }}">Payment Gateway</a></li>
-                        @endcan
-                    </ul>
-                </div>
-            </li>
-        @endcanany
-
-        {{--    Blog Manage    --}}
-        @canany(['View Blog', 'Create Blog'])
-            <li class="nav-item @if(request()->routeIs('admin.blog.*')) active @endif">
-                <a class="nav-link" data-toggle="collapse" href="#blog" aria-expanded="false" aria-controls="blog">
-                    <i class="typcn typcn-image-outline menu-icon"></i>
-                    <span class="menu-title">Blog</span>
-                    <i class="typcn typcn-chevron-right menu-arrow"></i>
-                </a>
-
-                <div class="collapse @if(request()->routeIs('admin.blog.*')) show @endif" id="blog">
-                    <ul class="nav flex-column sub-menu">
-                        @can('View Blog')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.blog.index') active @endif"
-                                    href="{{ route('admin.blog.index') }}">Blog List</a></li>
-                        @endcan
-
-                        @can('Create Blog')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.blog.create') active @endif"
-                                    href="{{ route('admin.blog.create') }}">Create Blog</a></li>
-                        @endcan
-                    </ul>
-                </div>
-            </li>
-        @endcanany
-
-        {{--    Landing page Manage    --}}
-        {{--        <li class="nav-item @if(request()->routeIs('admin.landing-page.*')) active @endif">--}}
-        {{--            <a class="nav-link" data-toggle="collapse" href="#landing" aria-expanded="false" aria-controls="landing">--}}
-        {{--                <i class="typcn typcn-media-play menu-icon"></i>--}}
-        {{--                <span class="menu-title">Landing Page</span>--}}
-        {{--                <i class="typcn typcn-chevron-right menu-arrow"></i>--}}
-        {{--            </a>--}}
-
-        {{--            <div class="collapse @if(request()->routeIs('admin.landing-page.*')) show @endif" id="landing">--}}
-        {{--                <ul class="nav flex-column sub-menu">--}}
-        {{--                    <li class="nav-item"> <a class="nav-link @if($currentRouteName == 'admin.landing-page.index') active @endif" href="{{ route('admin.landing-page.index') }}">Landing Page</a></li>--}}
-        {{--                </ul>--}}
-        {{--            </div>--}}
-        {{--        </li>--}}
 
         {{--   Pages     --}}
         @can('View Page')
@@ -414,28 +225,9 @@
             </li>
         @endcan
 
-        {{--   Reports     --}}
-        @can('Sales Report')
-            <li class="nav-item @if(request()->routeIs('admin.sales-report.*')) active @endif">
-                <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
-                    <i class="typcn typcn-document-add menu-icon"></i>
-                    <span class="menu-title">Reports</span>
-                    <i class="menu-arrow"></i>
-                </a>
-
-                <div class="collapse @if(request()->routeIs('admin.sales-report.*')) show @endif" id="report">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a
-                                class="nav-link @if($currentRouteName == 'admin.sales-report.index') active @endif"
-                                href="{{ route('admin.sales-report.index') }}">Sales Report</a></li>
-                    </ul>
-                </div>
-            </li>
-        @endcan
-
         {{--   Settings     --}}
-        @canany(['Basic Info', 'Shipping Charge', 'Order Status', 'Pixel', 'Google Tag'])
-            <li class="nav-item  @if(request()->routeIs('admin.basic-info.index','admin.shipping-charge.index','admin.order-status.index','admin.pixel.index','admin.tag.index')) active @endif">
+        @canany(['Basic Info'])
+            <li class="nav-item  @if(request()->routeIs('admin.basic-info.index')) active @endif">
                 <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
                    aria-controls="form-elements">
                     <i class="typcn typcn-spanner menu-icon"></i>
@@ -443,38 +235,13 @@
                     <i class="menu-arrow"></i>
                 </a>
 
-                <div
-                    class="collapse @if(request()->routeIs('admin.basic-info.index','admin.shipping-charge.index','admin.order-status.index','admin.pixel.index','admin.tag.index')) show @endif"
-                    id="form-elements">
+                <div class="collapse @if(request()->routeIs('admin.basic-info.index')) show @endif"
+                     id="form-elements">
                     <ul class="nav flex-column sub-menu">
                         @can('Basic Info')
                             <li class="nav-item"><a
                                     class="nav-link @if($currentRouteName == 'admin.basic-info.index') active @endif"
                                     href="{{ route('admin.basic-info.index') }}">Basic Info</a></li>
-                        @endcan
-
-                        @can('Shipping Charge')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.shipping-charge.index') active @endif"
-                                    href="{{ route('admin.shipping-charge.index') }}">Shipping Charge</a></li>
-                        @endcan
-
-                        @can('Order Status')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.order-status.index') active @endif"
-                                    href="{{ route('admin.order-status.index') }}">Order Status</a></li>
-                        @endcan
-
-                        @can('Pixel')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.pixel.index') active @endif"
-                                    href="{{ route('admin.pixel.index') }}">Pixel</a></li>
-                        @endcan
-
-                        @can('Google Tag')
-                            <li class="nav-item"><a
-                                    class="nav-link @if($currentRouteName == 'admin.tag.index') active @endif"
-                                    href="{{ route('admin.tag.index') }}">Tag Management</a></li>
                         @endcan
                     </ul>
                 </div>
