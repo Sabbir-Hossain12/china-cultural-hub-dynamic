@@ -44,7 +44,7 @@ class ChinaMigrationController extends Controller
             foreach ($request->file('images') as $image) {
                 $image_name = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $image->move('public/admin/upload/content/', $image_name);
-                $images[] = 'admin/upload/content/' . $image_name;
+                $images[] = 'public/admin/upload/content/' . $image_name;
             }
         }
 
@@ -88,7 +88,7 @@ class ChinaMigrationController extends Controller
             foreach ($request->file('images') as $image) {
                 $image_name = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                 $image->move('public/admin/upload/content/', $image_name);
-                $images[] = 'admin/upload/content/' . $image_name;
+                $images[] = 'public/admin/upload/content/' . $image_name;
             }
         }
 

@@ -6,7 +6,7 @@
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
                     <h3 class="wow fadeInUp">Content</h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque">The Lives of Ancient Chinese</h2>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque">{{ $live->title ?? '' }}</h2>
                 </div>
                 <!-- Section Title End -->
             </div>
@@ -19,19 +19,19 @@
                     <!-- Our Features Item Start -->
                     <div class="our-features-item-gold">
                         <!-- Our Features Image Start -->
+                        @isset($live->image_1)
                         <div class="our-features-image-gold">
                             <figure class="image-anime reveal">
-                                <img src="https://s3.amazonaws.com/libapps/accounts/63236/images/chinese-costume-clothing-002.jpg" alt="">
+                                <img src="{{ asset($live->image_1) }}" alt="">
                             </figure>
                         </div>
+                        @endisset
                         <!-- Our Features Image End -->
 
                         <!-- Our Features Content Start -->
                         <div class="our-features-content-gold">
                             <div class="our-features-body-gold">
-                                <!--                                <h2><span class="counter">96</span>%</h2>-->
-                                <h3> Enchanted Forest Zone</h3>
-                                <p>Dive into an erupting volcano in this explosive, immersive journey.</p>
+                                {!! $live->content_1 !!}
                             </div>
                             <div class="icon-box">
                                 <img src="images/icon-our-features-1-gold.svg" alt="">
@@ -44,19 +44,19 @@
                     <!-- Our Features Item Start -->
                     <div class="our-features-item-gold">
                         <!-- Our Features Image Start -->
+                        @isset($live->image_2)
                         <div class="our-features-image-gold">
                             <figure class="image-anime reveal">
-                                <img src="https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_1.7777777777777777,w_1920,h_1080,g_auto/dpr_auto/f_auto/q_auto:eco/v1/emperor-taizong-of-tang-599-649-second-emperor-of-the-tang-dynasty-of-china-from-626-to-649-audie?_a=BAVAZGID0" alt="">
+                                <img src="{{ asset($live->image_2) }}" alt="">
                             </figure>
                         </div>
+                        @endisset
                         <!-- Our Features Image End -->
 
                         <!-- Our Features Content Start -->
                         <div class="our-features-content-gold">
                             <div class="our-features-body-gold">
-                                <!--                                <h2><span class="counter">94</span>%</h2>-->
-                                <h3> SkyRush Coaster</h3>
-                                <p>Soar through the skies at lightning speed with twists, loops, and thrills.</p>
+                         {!! $live->content_2 ?? '' !!}
                             </div>
                             <div class="icon-box">
                                 <img src="images/icon-our-features-2-gold.svg" alt="">
@@ -69,20 +69,19 @@
                     <!-- Our Features Item Start -->
                     <div class="our-features-item-gold">
                         <!-- Our Features Image Start -->
+                        @isset($live->image_3)
                         <div class="our-features-image-gold">
                             <figure class="image-anime reveal">
-                                <img src="https://cdn.historycollection.com/wp-content/uploads/2018/12/The_Middle_Kingdom_-_a_survey_of_the_geography_government_education_social_life_arts_and_history_of_the_Chinese_Empire_and_its_inhabitants_1913_14764323832.jpg" alt="">
+                                <img src="{{ asset($live->image_3) }}" alt="">
                             </figure>
                         </div>
+                        @endisset
                         <!-- Our Features Image End -->
 
                         <!-- Our Features Content Start -->
                         <div class="our-features-content-gold">
                             <div class="our-features-body-gold">
-                                <!--                                <h2><span class="counter">95</span>%</h2>-->
-                                <h3>Castle of Dreams Live Show</h3>
-                                <p>A magical land filled with fairy-tale creatures, interactive shows, and
-                                    surprises.</p>
+                                {!! $live->content_3 !!}
                             </div>
                             <div class="icon-box">
                                 <img src="images/icon-our-features-3-gold.svg" alt="">
@@ -103,7 +102,7 @@
 
             <!-- About Us Button Start -->
             <div class="about-us-btn-gold">
-                <a href="about.html" class="btn-default">more about Ancient Chinese</a>
+                <a href="{{ route('lives') }}" class="btn-default">more about Ancient Chinese</a>
             </div>
             <!-- About Us Button End -->
         </div>

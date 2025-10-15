@@ -7,14 +7,14 @@
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
                     <h3 class="wow fadeInUp">Content</h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque">Migration and China's Social Changes</h2>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque">{{ $migration->title ?? '' }}</h2>
 
                 </div>
                 <!-- Section Title End -->
 
                 <!-- Intro Video Button Start -->
                 <div class="intro-video-button-gold">
-                    <a href="../../www.youtube.com/watch60d8.html?v=Y-x0efG1seA" class="popup-video"
+                    <a href="{{ $migration->video ?? '' }}" class="popup-video"
                        data-cursor-text="Play">
                         <figure>
                             <img src="images/intro-video-circle-gold.svg" alt="">
@@ -35,7 +35,7 @@
 
             <!-- About Us Button Start -->
             <div class="about-us-btn-gold">
-                <a href="about.html" class="btn-default">more about Migration</a>
+                <a href="{{ route('chinaMigration') }}" class="btn-default">more about Migration</a>
             </div>
             <!-- About Us Button End -->
         </div>

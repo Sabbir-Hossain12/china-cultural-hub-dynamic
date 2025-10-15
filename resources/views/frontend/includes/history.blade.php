@@ -8,20 +8,14 @@
                     <!-- Section Title Start -->
                     <div class="section-title">
                         <h3 class="wow fadeInUp">Content</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">The History and Society of China</h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">China’s long and dynamic history has shaped one of
-                            the world’s most enduring civilizations. Over thousands of years, Chinese society has
-                            evolved
-                            through powerful dynasties, philosophical traditions, and social reforms. From the ancient
-                            emperors
-                            to modern innovation, each era has contributed to China’s rich cultural
-                            identity and social harmony that continue to influence its people today.</p>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">{{ $history->title ?? '' }}</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">{{ $history->short_desc ?? '' }}</p>
                     </div>
                     <!-- Section Title End -->
 
                     <!-- Our Achievements Button Start -->
                     <div class="achievements-content-btn-gold wow fadeInUp" data-wow-delay="0.4s">
-                        <a href="#" class="btn-default btn-highlighted">More about History !</a>
+                        <a href="{{ route('history') }}" class="btn-default btn-highlighted">More about History !</a>
                     </div>
                     <!-- Our Achievements Button End -->
                 </div>

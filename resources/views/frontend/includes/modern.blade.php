@@ -1,4 +1,4 @@
-<!-- China in Modern Times and Western Civilisation Start -->
+<!-- The Lives of Ancient Chinese Start -->
 <div class="our-features-gold">
     <div class="container">
         <div class="row section-row">
@@ -6,8 +6,7 @@
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
                     <h3 class="wow fadeInUp">Content</h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque">China in Modern Times and Western
-                        Civilisation </h2>
+                    <h2 class="text-anime-style-3" data-cursor="-opaque">{{ $modern->title ?? '' }}</h2>
                 </div>
                 <!-- Section Title End -->
             </div>
@@ -20,19 +19,19 @@
                     <!-- Our Features Item Start -->
                     <div class="our-features-item-gold">
                         <!-- Our Features Image Start -->
-                        <div class="our-features-image-gold">
-                            <figure class="image-anime reveal">
-                                <img src="https://earth.org/wp-content/uploads/2022/04/Untitled-design-2022-04-14T155317.295.jpg" alt="">
-                            </figure>
-                        </div>
+                        @isset($modern->image_1)
+                            <div class="our-features-image-gold">
+                                <figure class="image-anime reveal">
+                                    <img src="{{ asset($modern->image_1) }}" alt="">
+                                </figure>
+                            </div>
+                        @endisset
                         <!-- Our Features Image End -->
 
                         <!-- Our Features Content Start -->
                         <div class="our-features-content-gold">
                             <div class="our-features-body-gold">
-                                <!--                                <h2><span class="counter">96</span>%</h2>-->
-                                <h3> Enchanted Forest Zone</h3>
-                                <p>Dive into an erupting volcano in this explosive, immersive journey.</p>
+                                {!! $modern->content_1 !!}
                             </div>
                             <div class="icon-box">
                                 <img src="images/icon-our-features-1-gold.svg" alt="">
@@ -45,19 +44,19 @@
                     <!-- Our Features Item Start -->
                     <div class="our-features-item-gold">
                         <!-- Our Features Image Start -->
-                        <div class="our-features-image-gold">
-                            <figure class="image-anime reveal">
-                                <img src="https://assets.isu.pub/document-structure/240412195205-8f59e022d0390e0e2a437d545cbbccbc/v1/ec2d169fb32b284a4fa4b9b2df1a58fe.jpeg" alt="">
-                            </figure>
-                        </div>
+                        @isset($modern->image_2)
+                            <div class="our-features-image-gold">
+                                <figure class="image-anime reveal">
+                                    <img src="{{ asset($modern->image_2) }}" alt="">
+                                </figure>
+                            </div>
+                        @endisset
                         <!-- Our Features Image End -->
 
                         <!-- Our Features Content Start -->
                         <div class="our-features-content-gold">
                             <div class="our-features-body-gold">
-                                <!--                                <h2><span class="counter">94</span>%</h2>-->
-                                <h3> SkyRush Coaster</h3>
-                                <p>Soar through the skies at lightning speed with twists, loops, and thrills.</p>
+                                {!! $modern->content_2 ?? '' !!}
                             </div>
                             <div class="icon-box">
                                 <img src="images/icon-our-features-2-gold.svg" alt="">
@@ -70,20 +69,19 @@
                     <!-- Our Features Item Start -->
                     <div class="our-features-item-gold">
                         <!-- Our Features Image Start -->
-                        <div class="our-features-image-gold">
-                            <figure class="image-anime reveal">
-                                <img src="https://media.istockphoto.com/id/497572532/photo/cityscape-of-guiyang-at-night.jpg?s=612x612&w=0&k=20&c=iZ2avxaTDglVbfygFduRdxADXI-KqUO1nhX4DlPgFZs=" alt="">
-                            </figure>
-                        </div>
+                        @isset($modern->image_3)
+                            <div class="our-features-image-gold">
+                                <figure class="image-anime reveal">
+                                    <img src="{{ asset($modern->image_3) }}" alt="">
+                                </figure>
+                            </div>
+                        @endisset
                         <!-- Our Features Image End -->
 
                         <!-- Our Features Content Start -->
                         <div class="our-features-content-gold">
                             <div class="our-features-body-gold">
-                                <!--                                <h2><span class="counter">95</span>%</h2>-->
-                                <h3>Castle of Dreams Live Show</h3>
-                                <p>A magical land filled with fairy-tale creatures, interactive shows, and
-                                    surprises.</p>
+                                {!! $modern->content_3 !!}
                             </div>
                             <div class="icon-box">
                                 <img src="images/icon-our-features-3-gold.svg" alt="">
@@ -104,12 +102,12 @@
 
             <!-- About Us Button Start -->
             <div class="about-us-btn-gold">
-                <a href="about.html" class="btn-default">more about Modern Times</a>
+                <a href="{{ route('modern') }}" class="btn-default">more about Modern China</a>
             </div>
             <!-- About Us Button End -->
         </div>
         <!-- About Us Footer End -->
     </div>
 </div>
-<!-- China in Modern Times and Western Civilisation End -->
+<!-- The Lives of Ancient Chinese End -->
 

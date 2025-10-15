@@ -82,17 +82,17 @@
     </style>
 
 
-    {{--    <div class="aboutarea__5 sp_bottom_100 sp_top_100">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-xl-12 col-lg-12" data-aos="fade-up">--}}
+{{--        <div class="aboutarea__5 sp_bottom_100 sp_top_100">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-xl-12 col-lg-12" data-aos="fade-up">--}}
 
-    {{--               --}}
-    {{--                </div>--}}
-    {{--                --}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
+
+{{--                    </div>--}}
+
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
     <div class="">
         <div id="chat-container"></div>

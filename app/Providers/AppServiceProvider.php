@@ -5,11 +5,21 @@ namespace App\Providers;
 use App\Models\BasicInfo;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\ChinaMigration;
+use App\Models\Collision;
+use App\Models\Community;
+use App\Models\Contemporary;
 use App\Models\Geography;
+use App\Models\History;
+use App\Models\Live;
+use App\Models\Modern;
 use App\Models\Page;
 use App\Models\Pixel;
+use App\Models\Political;
 use App\Models\Slider;
 use App\Models\Tag;
+use App\Models\Technology;
+use App\Models\Tradition;
 use App\Models\User;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
@@ -87,127 +97,95 @@ class AppServiceProvider extends ServiceProvider
         });
 
         //history
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        View()->composer('frontend.includes.history', function ($view) {
+            $history = History::first();
 
             $view->with([
-                'geography' => $geography,
-
+                'history' => $history,
             ]);
         });
 
         //tradition
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        View()->composer('frontend.includes.traditional', function ($view) {
+            $tradition = Tradition::first();
 
             $view->with([
-                'geography' => $geography,
-
+                'tradition' => $tradition,
             ]);
         });
 
         //lives
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        View()->composer('frontend.includes.live', function ($view) {
+            $live = Live::first();
 
             $view->with([
-                'geography' => $geography,
-
+                'live' => $live,
             ]);
         });
 
         //technology
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        View()->composer('frontend.includes.technology', function ($view) {
+            $technology = Technology::first();
 
             $view->with([
-                'geography' => $geography,
+                'technology' => $technology,
             ]);
         });
 
         //migration
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        View()->composer('frontend.includes.migration', function ($view) {
+            $migration = ChinaMigration::first();
 
             $view->with([
-                'geography' => $geography,
+                'migration' => $migration,
             ]);
         });
 
         //collision
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        View()->composer('frontend.includes.collision', function ($view) {
+            $collision = Collision::first();
 
             $view->with([
-                'geography' => $geography,
+                'collision' => $collision,
             ]);
         });
 
-        //Geography
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        //modern
+        View()->composer('frontend.includes.modern', function ($view) {
+            $modern = Modern::first();
 
             $view->with([
-                'geography' => $geography,
+                'modern' => $modern,
             ]);
         });
 
-        //Geography
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        //Contemporary
+        View()->composer('frontend.includes.Contemporary', function ($view) {
+            $contemporary = Contemporary::first();
 
             $view->with([
-                'geography' => $geography,
+                'contemporary' => $contemporary,
             ]);
         });
 
-        //Geography
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        //Political System
+        View()->composer('frontend.includes.political', function ($view) {
+            $political = Political::first();
 
             $view->with([
-                'geography' => $geography,
-
+                'political' => $political,
             ]);
         });
 
-        //Geography
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
+        //Community
+        View()->composer('frontend.includes.community', function ($view) {
+            $community = Community::first();
 
             $view->with([
-                'geography' => $geography,
+                'community' => $community,
 
             ]);
         });
-        //Geography
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
-
-            $view->with([
-                'geography' => $geography,
-
-            ]);
-        });
-        //Geography
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
-
-            $view->with([
-                'geography' => $geography,
-
-            ]);
-        });
-        //Geography
-        View()->composer('frontend.includes.geography', function ($view) {
-            $geography = Geography::first();
-
-            $view->with([
-                'geography' => $geography,
-
-            ]);
-        });
-
 
     }
 }
